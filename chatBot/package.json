@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "scss": "^0.2.4",
+    "scss-loader": "^0.0.1",
     "vite": "^4.4.6"
   }
 }
