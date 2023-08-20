@@ -1,6 +1,6 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
+import { createApp } from 'c:/Users/chivi/Desktop/js/vue/chatBot/chatBot/node_modules/vue/dist/vue'
 import App from './App.vue'
 import openChat from './openChat'
 
