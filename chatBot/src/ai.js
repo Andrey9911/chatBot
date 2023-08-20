@@ -4,7 +4,11 @@ export default class ai{
     answer = ''
     allActions = {
         'заказать пиццу': {
-            answer: 'Хорошо, пицца начала делаться'
+            answer: 'Хорошо, пицца начала делаться. Оплатить: ',
+            child: {
+                'Киви':{answer: 'speep :)))'},
+                'MasterCard':{answer: 'eat?  :)))'},
+            }
         },
         'еще что-то': {
             answer: 'что же я могу', 
@@ -13,6 +17,7 @@ export default class ai{
                 'поесть':{answer: 'eat?  :)))'},
             }
         },
+        
     }
     status = ['нет в сети', 'в сети', 'печатает...']
     sendFirstMess = () => {
@@ -23,10 +28,9 @@ export default class ai{
         }
     }
     sendAnswer = (message) => {
-        if(message == "привет"){
+        if(message.toLowerCase() == "привет"){
             return {
                 answer: 'приыет, напиши что-нибудь, например "help" :',
-    
             }
         }
         if(message == "хочу заказать пиццу")
@@ -41,7 +45,7 @@ export default class ai{
         if(message == "help"){
             return {
                 answer: 'Вот, какие опции у нас есть :',
-                child: this.allActions
+                child: this.allActions[message]
     
             }
         }

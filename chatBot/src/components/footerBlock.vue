@@ -5,9 +5,7 @@ import { provide, ref } from 'vue';
   let mess = null
   const emit = defineEmits('sub')
   function send(){
-    
     emit('sub', mess != null ? mess : 'entry message :(')
-    
   }
 </script>
 
@@ -37,6 +35,7 @@ import { provide, ref } from 'vue';
         border-radius: 7px;
         padding: 5px 10px;
         margin-right: 10px;
+        color: var(--common-color-text);
       }
 
       .footer__sent-but{

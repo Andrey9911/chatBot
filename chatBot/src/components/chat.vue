@@ -1,10 +1,13 @@
 <script setup>
-import {computed, createApp, ref, provide, watch } from 'vue';
+import {computed, createApp, ref, provide, watch, toRefs,onMounted } from 'vue';
 import message from './message.vue'; 
 import MessageCreater from '../messageObj';
 
 const props = defineProps(['interlocutor', 'messagesAll'])
-
+  let container = ref()
+onMounted(() => {
+        container.value;
+    })
 let array_mess = props.messagesAll
 function getTheCommand(command){
     console.log(command);
@@ -13,17 +16,19 @@ function getTheCommand(command){
     setTimeout(() => {
       let messObj = new MessageCreater('ai',true, props.interlocutor.getCommand(command).answer, props.interlocutor.getCommand(command).child).create()
       array_mess.push(messObj);
-       console.log(messObj);
+    //    console.log(messObj);
     },0)
 
     array_mess.push(messObj)
-    console.log(array_mess)
+    container.value.scrollTo({
+            top: container.value.scrollHeight, 
+            behavior: 'smooth' 
+        })
 }
 
 </script>
 <template>
-    <div class="window-chat">
-        
+    <div class="window-chat" ref="container">
         <message @subButAction="getTheCommand" v-for="el in props.messagesAll" :el="el"/>
     </div>
 </template>
@@ -31,6 +36,7 @@ function getTheCommand(command){
 <style scoped lang="scss">
 @import '../assets/base.scss';
 .window-chat{
+    position: relative;
     overflow-y: scroll;
     width: 100%;
     padding: 0;

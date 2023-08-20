@@ -9,6 +9,7 @@
   let isFree
   let myMess = ref('')
   let message_array = ref([])
+  let el;
 
   onMounted(() => {
     let messObj = new MessageCreater('ai',true, interlocutor.sendFirstMess().answer, interlocutor.sendFirstMess().child).create()
@@ -25,7 +26,6 @@
     },0)
     
 
-
     message_array.value.push(messObj);
     console.log(message_array.value);
   }
@@ -40,7 +40,7 @@
     
 
   <main>
-    <chat  :interlocutor="interlocutor" :messagesAll="message_array"/>
+    <chat :ref="(el) => el = el"  :interlocutor="interlocutor" :messagesAll="message_array"/>
   </main>
   <div class="foot">
     <footer-block @sub="receive"/>
